@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+  <div class="full-container">
+    <div id="arrow-left" class="arrow"></div>
+
+    <div class="slider">
+
+      <div class="slide slider1">
+
+        <div class="slider-content">
+
+          <span>Image One</span>
+
+        </div>
+
+      </div>
+
+      <div class="slide slider2">
+
+        <div class="slider-content">
+
+          <span>Image Two</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="slide slider3">
+
+        <div class="slider-content">
+
+          <span>Image Three</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="arrow-right" class="arrow"></div>
+
+  </div>
+
+  <script>
+
+    let sliderImages = document.querySelectorAll('.slide'),
+      leftArr = document.querySelector('#arrow-left'),
+      rightArr = document.querySelector('#arrow-right');
+
+    let current = 0;
+
+    function reset() {
+      for (let i = 0; i < sliderImages.length; i++) {
+
+        sliderImages[i].style.display = 'none';
+        // console.log(slideImages[i]);
+
+      }
+    }
+
+    function startSlide() {
+      reset();
+      sliderImages[0].style.display = "block";
+    }
+
+    function slideLeft() {
+      reset();
+      sliderImages[current - 1].style.display = "block";
+      current--;
+    }
+
+    function slideRight() {
+      reset();
+      sliderImages[current + 1].style.display = "block";
+      current++;
+    }
+
+    leftArr.addEventListener('click', function () {
+
+
+      if (current === 0) {
+        current == sliderImages.length;
+      }
+      slideLeft();
+
+
+    });
+
+    rightArr.addEventListener('click', function () {
+      if (current === sliderImages.length - 1) {
+        current = -1;
+      }
+      slideRight();
+    });
+
+
+
+
+    startSlide();
+
+  </script>
+</body>
+
+</html>
